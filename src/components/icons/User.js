@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Svg, { Path } from 'react-native-svg';
+import Svg, { Path, Circle } from 'react-native-svg';
 
-function SvgHeart(props) {
+function SvgUser(props) {
   return (
     <Svg
       width={24}
@@ -15,9 +15,10 @@ function SvgHeart(props) {
       className=''
       {...props}
     >
-      <Path d='M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z' />
+      <Path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2' />
+      <Circle cx={12} cy={7} r={4} />
     </Svg>
   );
 }
 
-export default SvgHeart;
+export default SvgUser;

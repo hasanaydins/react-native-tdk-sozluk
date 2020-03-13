@@ -1,39 +1,31 @@
 import * as React from 'react';
 import 'react-native-gesture-handler';
+import {ThemeProvider} from 'styled-components';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeStackScreen from './src/screens/Home';
 import ProfileStackScreen from './src/screens/Profile';
-import Icon from 'react-native-vector-icons/AntDesign';
-
+import TabBar from './src/components/TabBar';
+import Box from './src/components/Box';
+import {SafeAreaView} from 'react-native';
+import SearchStackScreen from './src/screens/Search';
+import Theme from './src/utils/theme';
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({route}) => ({
-          tabBarIcon: ({focused, color, size}) => {
-            let iconName;
-
-            if (route.name === 'Home') {
-              iconName = focused ? 'home' : 'home';
-            } else if (route.name === 'Profile') {
-              iconName = focused ? 'user' : 'user';
-            }
-
-            // You can return any component that you like here!
-            return <Icon name={iconName} size={size} color={color} />;
-          },
-        })}
-        tabBarOptions={{
-          activeTintColor: 'tomato',
-          inactiveTintColor: 'gray',
-        }}>
-        <Tab.Screen name="Home" component={HomeStackScreen} />
-        <Tab.Screen name="Profile" component={ProfileStackScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <ThemeProvider theme={Theme}>
+      <Box flex={1} as={SafeAreaView}>
+        <NavigationContainer>
+          <Tab.Navigator
+            initialRouteName="Home"
+            tabBar={props => <TabBar {...props} />}>
+            <Tab.Screen name="Home" component={HomeStackScreen} />
+            <Tab.Screen name="Search" component={SearchStackScreen} />
+            <Tab.Screen name="Profile" component={ProfileStackScreen} />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </Box>
+    </ThemeProvider>
   );
 }
-Icon.loadFont();

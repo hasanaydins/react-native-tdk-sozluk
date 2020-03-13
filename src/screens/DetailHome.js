@@ -2,19 +2,19 @@ import {Button, Text, View} from 'react-native';
 import * as React from 'react';
 
 function DetailHome({route, navigation}) {
-  const {itemId} = route.params;
-  const {title} = route.params;
+  const {paramID} = route.params;
+  const {paramDesc} = route.params;
 
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <Text>Details Screen</Text>
-      <Text>itemId: {itemId}</Text>
-      <Text>title: {title}</Text>
+      <Text>paramID: {paramID}</Text>
+      <Text>paramDesc: {paramDesc}</Text>
       <Button
         title="Go to Details again"
         onPress={() =>
           navigation.push('Details', {
-            itemId: Math.floor(Math.random() * 100),
+            paramID: Math.floor(Math.random() * 100),
           })
         }
       />
