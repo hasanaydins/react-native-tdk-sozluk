@@ -4,17 +4,30 @@ import {
   compose,
   color,
   size,
+  position,
   space,
   flexbox,
+  margin,
+  border,
+  padding,
+  shadow,
+  background,
   borderRadius,
 } from 'styled-system';
 
 const Box = styled(View)(
   compose(
+    compose,
     color,
     size,
-    flexbox,
+    position,
     space,
+    flexbox,
+    margin,
+    border,
+    padding,
+    shadow,
+    background,
     borderRadius,
   ),
 );
