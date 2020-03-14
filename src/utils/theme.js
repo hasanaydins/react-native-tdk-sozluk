@@ -8,6 +8,7 @@ const radii = {
 const colors = {
   red: '#E41717',
   gray: '#828C95',
+  bggray: '#F9F9F9',
 };
 
 export default {

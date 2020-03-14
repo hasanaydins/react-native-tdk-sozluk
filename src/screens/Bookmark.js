@@ -2,6 +2,7 @@ import { Button, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import DetailBookmark from './DetailBookmark';
+import theme from '../utils/theme';
 
 const BookmarkStack = createStackNavigator();
 
@@ -10,7 +11,7 @@ function BookmarkStackScreen() {
     <BookmarkStack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: '#f4511e',
+          backgroundColor: theme.colors.red,
         },
         headerTintColor: '#fff',
         headerTitleStyle: {

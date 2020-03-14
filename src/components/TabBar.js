@@ -9,9 +9,19 @@ function TabBar({ state, descriptors, navigation }) {
   return (
     <View
       style={{
+        paddingBottom: 10,
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 10,
+        },
+        shadowOpacity: 0.05,
+        shadowRadius: 5,
+        borderWidth: 1,
+        borderColor: '#00000015',
         borderTopLeftRadius: 21,
         borderTopRightRadius: 21,
-        backgroundColor: '#00000000',
+        backgroundColor: 'white',
         flexDirection: 'row',
       }}
     >
