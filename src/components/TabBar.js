@@ -1,21 +1,22 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 import Button from './Button';
-import SvgHome from './icons/Home';
 import SvgSearch from './icons/Search';
-import SvgUser from './icons/User';
+import SvgOgren from './icons/Ogren';
+import SvgBookmark from './icons/Bookmark';
 import Box from './Box';
-import Theme from '../utils/theme';
-
-function TabBar({state, descriptors, navigation}) {
+function TabBar({ state, descriptors, navigation }) {
   return (
     <View
       style={{
+        borderTopLeftRadius: 21,
+        borderTopRightRadius: 21,
+        backgroundColor: '#00000000',
         flexDirection: 'row',
-
-      }}>
+      }}
+    >
       {state.routes.map((route, index) => {
-        const {options} = descriptors[route.key];
+        const { options } = descriptors[route.key];
         const label =
           options.tabBarLabel !== undefined
             ? options.tabBarLabel
@@ -36,36 +37,29 @@ function TabBar({state, descriptors, navigation}) {
           }
         };
 
-        return label === 'Search' ? (
-          <Box key={label} p={15} bg="white" borderRadius="full" mt={-15}>
+        return (
+          <Box
+            key={label}
+            flex={1}
+            flexDirection='row'
+            justifyContent='center'
+            p={15}
+            bg='transparent'
+          >
             <Button
-              key={label}
-              size={56}
-              bg="purple"
-              borderRadius="full"
-              justifyContent="center"
-              onPress={onPress}>
-              <SvgSearch stroke="white" />
+              height={55}
+              width={95}
+              justifyContent='center'
+              alignItems='center'
+              bg={isFocused ? '#E4171E18' : 'transparent'}
+              borderRadius={14}
+              onPress={onPress}
+            >
+              {label === 'Search' && <SvgSearch color='#E41717' />}
+              {label === 'Ogren' && <SvgOgren color='#E41717' />}
+              {label === 'Bookmark' && <SvgBookmark color='#E41717' />}
             </Button>
           </Box>
-        ) : (
-          <Button
-            key={label}
-            height={55}
-            flex={1}
-            pt={8}
-            flexDirection="column"
-            justifyContent="center"
-            onPress={onPress}>
-            {label === 'Home' && <SvgHome stroke={Theme.colors.gray} />}
-            {label === 'Profile' && <SvgUser stroke={Theme.colors.gray} />}
-            <Box
-              mt={8}
-              size={5}
-              borderRadius={20}
-              bg={isFocused ? 'purple' : 'transparent'}
-            />
-          </Button>
         );
       })}
     </View>

@@ -4,18 +4,16 @@ import Svg, { Path } from 'react-native-svg';
 function SvgStar(props) {
   return (
     <Svg
-      width={24}
-      height={24}
-      viewBox='0 0 24 24'
-      fill='none'
-      stroke='currentColor'
-      strokeWidth={2}
-      strokeLinecap='round'
-      strokeLinejoin='round'
+      width='24'
+      height='24'
+      viewBox='0 0 20.256 19.264'
       className=''
       {...props}
     >
-      <Path d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z' />
+      <Path
+        d='M10.128 0l3.13 6.34 7 1.023-5.066 4.937 1.2 6.968-6.259-3.292-6.264 3.288 1.2-6.968L0 7.363 7 6.34z'
+        fill='#e4171e'
+      />
     </Svg>
   );
 }

@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { TouchableHighlight } from 'react-native';
 import styled from 'styled-components';
 import {
   compose,
@@ -9,7 +9,7 @@ import {
   borderRadius,
 } from 'styled-system';
 
-const Box = styled(View)(
+const Touch = styled(TouchableHighlight)(
   compose(
     color,
     size,
@@ -19,4 +19,9 @@ const Box = styled(View)(
   ),
 );
 
-export default Box;
+Touch.defaultProps = {
+  padding: 0,
+  margin: 0,
+};
+
+export default Touch;

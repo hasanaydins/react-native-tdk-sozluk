@@ -1,13 +1,13 @@
 const space = [];
 
 const radii = {
-  normal: 6,
+  normal: 10,
   full: 9999,
 };
 
 const colors = {
-  purple: '#6400FF',
-  gray: '#5F5F5F',
+  red: '#E41717',
+  gray: '#828C95',
 };
 
 export default {
