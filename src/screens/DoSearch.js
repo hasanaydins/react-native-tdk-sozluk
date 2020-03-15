@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 import * as React from 'react';
 import Box from '../components/Box';
 

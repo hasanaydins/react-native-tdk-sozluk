@@ -1,47 +1,158 @@
-import { createStackNavigator } from '@react-navigation/stack';
-import * as React from 'react';
-import Input from '../components/Input';
-import SvgLogo from '../components/icons/Logo';
-import SvgSearch from '../components/icons/Search';
-import SvgVoice from '../components/icons/Voice';
-import SvgDots from '../components/icons/Dots';
-import Box from '../components/Box';
-import Button from '../components/Button';
-import theme from '../utils/theme';
-import { Dimensions, StatusBar, Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StatusBar, Animated, Keyboard, FlatList, View } from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import { useFocusEffect } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import theme from '../utils/theme';
 import DoSearch from '../screens/DoSearch';
+import CardHistory from '../components/CardHistory';
+
+import Box from '../components/Box';
+import Text from '../components/Text';
+import Button from '../components/Button';
+import Input from '../components/Input';
+
+import SvgLogo from '../components/icons/Logo';
+import SvgSearch from '../components/icons/Search';
+import SvgBack from '../components/icons/Back';
+import SvgVoice from '../components/icons/Voice';
+import SvgDots from '../components/icons/Dots';
+import DetailSearch from './DetailSearch';
+import Harfler from '../components/Harfler';
+import KelimeAra from '../components/KelimeAra';
 
 const SearchStack = createStackNavigator();
-const dwith = Math.round(Dimensions.get('window').width);
-const dheight = Math.round(Dimensions.get('window').height);
 
 function SearchStackScreen() {
   return (
     <SearchStack.Navigator headerMode='none'>
       <SearchStack.Screen name='Search' component={SearchScreen} />
-      <SearchStack.Screen name='DoSearch' component={DoSearch} />
+      <SearchStack.Screen name='Detail' component={DetailSearch} />
     </SearchStack.Navigator>
   );
 }
 
 function SearchScreen({ navigation }) {
+  const DATA = [
+    {
+      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+      title: 'Söz Açmak',
+    },
+    {
+      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+      title: 'Öğrenim',
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d72',
+      title: 'Kılavuz',
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d722',
+      title: 'Sözünü etmek',
+    },
+  ];
+  const KELIMELER = [
+    {
+      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+      title: 'söz',
+    },
+    {
+      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+      title: 'söz almak',
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d72',
+      title: 'söz altında',
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d722',
+      title: 'söz vermek',
+    },
+    {
+      id: '58694a0f-3da1-471f-bed96-145571e29d722',
+      title: 'sözünden dönmek',
+    },
+  ];
+
+  const HARFLER = [
+    {
+      id: '1',
+      harf: 'ç',
+    },
+    {
+      id: '2',
+      harf: 'ö',
+    },
+    {
+      id: '3',
+      harf: 'ğ',
+    },
+    {
+      id: '4',
+      harf: 'ü',
+    },
+    {
+      id: '5',
+      harf: 'ş',
+    },
+    {
+      id: '6',
+      harf: 'û',
+    },
+    {
+      id: '7',
+      harf: 'â',
+    },
+    {
+      id: '8',
+      harf: 'î',
+    },
+  ];
+
   const [isFocused, setFocused] = React.useState(false);
+  const [heroHeight] = useState(new Animated.Value(100)); // Initial value for opacity: 0
+
+  useEffect(() => {
+    if (isFocused) {
+      Animated.timing(heroHeight, {
+        toValue: 1,
+        duration: 200,
+      }).start();
+    } else {
+      Animated.timing(heroHeight, {
+        toValue: 100,
+        duration: 200,
+      }).start();
+    }
+  }, [isFocused, heroHeight]);
+
   useFocusEffect(
     React.useCallback(() => {
-      StatusBar.setBarStyle('dark-content');
-    }, []),
+      StatusBar.setBarStyle(isFocused ? 'dark-content' : 'light-content');
+    }, [isFocused]),
   );
   return (
-    <Box flex={1} as={SafeAreaView} bg={theme.colors.red}>
+    <Box
+      flex={1}
+      as={SafeAreaView}
+      bg={isFocused ? theme.colors.bglight : theme.colors.red}
+    >
       {/*// LOGO  */}
-      <Box justifyContent='center' flexDirection='row' pt={5} pb={30}>
+
+      <Box
+        as={Animated.View}
+        justifyContent='center'
+        flexDirection='row'
+        mt={20}
+        height={heroHeight}
+      >
         <SvgLogo />
       </Box>
+
       {/*// LOGO  */}
       {/*// INPUT  */}
-      <Box position='relative' mx={29}>
+      <Box mx={29}>
         <Input
           style={{
             shadowColor: '#000',
@@ -59,11 +170,24 @@ function SearchScreen({ navigation }) {
           height={64}
           borderRadius='normal'
           paddingLeft={47}
-          onFocus={() => setFocused(true) && DoSearch}
+          onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
         />
         <Button position='absolute' left={14} top={21}>
-          <SvgSearch color={theme.colors.gray} />
+          {isFocused ? (
+            <Button
+              onPress={() => {
+                setFocused(false);
+                Keyboard.dismiss();
+              }}
+            >
+              <SvgBack color={theme.colors.gray} />
+            </Button>
+          ) : (
+            <Button>
+              <SvgSearch color={theme.colors.gray} />
+            </Button>
+          )}
         </Button>
         <Button position='absolute' right={14} top={21} p={0} m={0}>
           <SvgVoice color={theme.colors.red} />
@@ -80,32 +204,56 @@ function SearchScreen({ navigation }) {
         borderTopRightRadius={23}
         mt={40}
       >
-        <Box
-          flexDirection='row'
-          alignContent='center'
-          justifyContent='space-between'
-          mt={25}
-          mx={30}
-        >
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: '500',
-            }}
+        {!isFocused && (
+          <Box
+            flexDirection='row'
+            alignContent='center'
+            justifyContent='space-between'
+            my={24}
+            mx={30}
           >
-            Son Aramalar
-          </Text>
-          <Button>
-            <SvgDots color='black' />
-          </Button>
-        </Box>
-        <Button
-          onPress={() => navigation.navigate('DoSearch')}
-          flex={1}
-          justifyContent='center'
-        >
-          <Text>Go to DO search</Text>
-        </Button>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: '600',
+              }}
+            >
+              Son Aramalar
+            </Text>
+            <Button bottom={0}>
+              <SvgDots color='black' width={5} />
+            </Button>
+          </Box>
+        )}
+        {isFocused ? (
+          // HARFLER
+          <Box>
+            <Box justifyContent='center' alignItems='center' mt={-20}>
+              <FlatList
+                height={60}
+                horizontal={true}
+                data={HARFLER}
+                renderItem={({ item }) => <Harfler item={item} />}
+                keyExtractor={item => item.id}
+              />
+            </Box>
+
+            <FlatList
+              data={KELIMELER}
+              renderItem={({ item }) => <KelimeAra item={item.title} />}
+              keyExtractor={item => item.id}
+            />
+          </Box>
+        ) : (
+          // arama gecmişi
+          <FlatList
+            data={DATA}
+            renderItem={({ item }) => (
+              <CardHistory text={item.title} navigation={navigation} />
+            )}
+            keyExtractor={item => item.id}
+          />
+        )}
       </Box>
     </Box>
   );

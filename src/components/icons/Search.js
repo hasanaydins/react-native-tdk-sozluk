@@ -12,7 +12,7 @@ function SvgSearch(props) {
     >
       <G
         fill='none'
-        stroke='currentColor'
+        stroke='#e4171e'
         strokeLinecap='round'
         strokeLinejoin='round'
         strokeWidth={3}
