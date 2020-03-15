@@ -13,7 +13,7 @@ function SvgStarBos(props) {
       <Path
         d='M11.128 1l3.13 6.34 7 1.023-5.066 4.937 1.2 6.968-6.259-3.292-6.264 3.288 1.2-6.968L1 8.363 8 7.34z'
         fill='none'
-        stroke='currentColor'
+        stroke='#e0e0e0'
         strokeLinecap='round'
         strokeLinejoin='round'
         strokeWidth={2}

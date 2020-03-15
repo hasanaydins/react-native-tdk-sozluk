@@ -12,7 +12,7 @@ function SvgRefresh(props) {
     >
       <G
         fill='none'
-        stroke='currentColor'
+        stroke='#e0e0e0'
         strokeLinecap='round'
         strokeLinejoin='round'
       >

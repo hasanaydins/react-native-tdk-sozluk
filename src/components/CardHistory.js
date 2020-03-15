@@ -24,7 +24,7 @@ export default function CardHistory({ text, navigation }) {
         borderColor='#E0E0E0'
         borderRadius={15}
         onPress={() => {
-          navigation.navigate('Detail', { paramID: 12, paramDesc: 'kankaa' });
+          navigation.navigate('Detail', { paramID: 12, paramDesc: text });
         }}
       >
         <Text ml={25} fontSize={14} fontWeight='400'>

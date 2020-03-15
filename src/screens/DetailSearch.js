@@ -91,6 +91,7 @@ function DetailSearch({ route, navigation }) {
         mt={30}
         width={230}
         height={77}
+
         bg='#FFFFFF24'
         flexDirection='row'
         borderTopRightRadius={12}
@@ -100,13 +101,13 @@ function DetailSearch({ route, navigation }) {
         alignItems='center'
       >
         <Text
-          fontSize={26}
+          fontSize={24}
           fontWeight='800'
           color='white'
           fontStyle='italic'
           right={0}
         >
-          Söz almak
+          {paramDesc}
         </Text>
 
         <Button

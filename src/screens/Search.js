@@ -3,9 +3,7 @@ import { StatusBar, Animated, Keyboard, FlatList, View } from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import { useFocusEffect } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
 import theme from '../utils/theme';
-import DoSearch from '../screens/DoSearch';
 import CardHistory from '../components/CardHistory';
 
 import Box from '../components/Box';
@@ -13,7 +11,6 @@ import Text from '../components/Text';
 import Button from '../components/Button';
 import Input from '../components/Input';
 
-import SvgLogo from '../components/icons/Logo';
 import SvgSearch from '../components/icons/Search';
 import SvgBack from '../components/icons/Back';
 import SvgVoice from '../components/icons/Voice';
@@ -21,14 +18,45 @@ import SvgDots from '../components/icons/Dots';
 import DetailSearch from './DetailSearch';
 import Harfler from '../components/Harfler';
 import KelimeAra from '../components/KelimeAra';
+import Settings from './Settings';
 
 const SearchStack = createStackNavigator();
 
-function SearchStackScreen() {
+function SearchStackScreen({ route, navigation }) {
   return (
     <SearchStack.Navigator headerMode='none'>
-      <SearchStack.Screen name='Search' component={SearchScreen} />
-      <SearchStack.Screen name='Detail' component={DetailSearch} />
+      <SearchStack.Screen
+        name='Search'
+        component={SearchScreen}
+        options={() => {
+          return {
+            header: () => {},
+            /* title: '',*/
+            /*            headerStyle: {
+              backgroundColor: theme.colors.red,
+              shadowColor: 'transparent',
+            },
+            headerRight: () => (
+              <Box mr={10}>
+                <SvgDots />
+              </Box>
+            ),*/
+          };
+        }}
+      />
+      <SearchStack.Screen
+        name='Detail'
+        component={DetailSearch}
+        options={() => {
+          return {
+            header: () => {},
+          };
+        }}
+      />
+      <SearchStack.Screen
+        name='Settings'
+        component={Settings}
+      />
     </SearchStack.Navigator>
   );
 }
@@ -159,7 +187,19 @@ function SearchScreen({ navigation }) {
         mt={20}
         height={heroHeight}
       >
-        <SvgLogo />
+        <Text color='white' fontWeight='bold' fontSize={30}>
+          sözlük
+        </Text>
+        <Button
+          size={40}
+          position='absolute'
+          right={30}
+          top={4}
+          style={{ transform: [{ rotate: '90deg' }] }}
+          onPress={() => navigation.navigate('Settings')}
+        >
+          <SvgDots color='white' width={22} height={22} />
+        </Button>
       </Box>
 
       {/*// LOGO  */}
