@@ -79,7 +79,7 @@ function Ogren() {
                 title='Sıkça karıştırılanlar'
                 text='tefriş etmek  fiil.'
               />
-              <SvgTwoWay margin color='black' alignSelf='center' />
+              <SvgTwoWay color='black' alignSelf='center' />
               <Box>
                 <CardCenterOgren text='tefriş etmek  fiil.' />
               </Box>
