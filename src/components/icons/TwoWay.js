@@ -6,6 +6,7 @@ function SvgTwoWay(props) {
     <Svg
       width='24'
       height='24'
+      fill='currentColor'
       viewBox='0 0 23.603 10.152'
       className=''
       {...props}

@@ -18,7 +18,6 @@ export default function CardHistory({ text, navigation }) {
         alignItems='center'
         justifyContent='space-between'
         position='relative'
-        mx={15}
         height={60}
         bg='white'
         border='1px solid'

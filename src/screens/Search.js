@@ -37,7 +37,7 @@ function SearchScreen({ navigation }) {
   const DATA = [
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'Söz Açmak',
+      title: 'Söz Almak',
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
@@ -72,6 +72,18 @@ function SearchScreen({ navigation }) {
     {
       id: '58694a0f-3da1-471f-bed96-145571e29d722',
       title: 'sözünden dönmek',
+    },
+    {
+      id: '586940f-3da1-471f-bd96-145571e29d72',
+      title: 'sözü bir',
+    },
+    {
+      id: '5869a0f-3da1-471f-bd96-145571e29d722',
+      title: 'sözlenmek',
+    },
+    {
+      id: '586940f-3da1-471f-bd96-145571e29d722',
+      title: 'söz uçar yazı kalır',
     },
   ];
 
@@ -203,6 +215,7 @@ function SearchScreen({ navigation }) {
         borderTopLeftRadius={23}
         borderTopRightRadius={23}
         mt={40}
+        paddingHorizontal={20}
       >
         {!isFocused && (
           <Box
@@ -210,7 +223,6 @@ function SearchScreen({ navigation }) {
             alignContent='center'
             justifyContent='space-between'
             my={24}
-            mx={30}
           >
             <Text
               style={{

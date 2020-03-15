@@ -6,6 +6,7 @@ function SvgSort(props) {
     <Svg
       width='24'
       height='24'
+      fill='currentColor'
       viewBox='0 0 22.432 19.628'
       className=''
       {...props}
