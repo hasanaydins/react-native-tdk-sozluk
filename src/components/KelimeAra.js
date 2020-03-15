@@ -1,9 +1,11 @@
 import Text from './Text';
 import Box from './Box';
-import React from 'react';
+import Button from './Button';
+import React  from 'react';
 import SvgStar from './icons/Star';
+import SvgStarBos from './icons/StarBos';
 
-export default function KelimeAra({ item, isFavoried }) {
+export default function KelimeAra({ item }) {
   return (
     <Box>
       <Box
@@ -18,7 +20,9 @@ export default function KelimeAra({ item, isFavoried }) {
         </Text>
 
         <Box>
-          <SvgStar />
+          <Button>
+            <SvgStar color='red' />
+          </Button>
         </Box>
       </Box>
       <Box height={1} bg='#E0E0E0' />

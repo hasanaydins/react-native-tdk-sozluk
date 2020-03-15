@@ -7,6 +7,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import SafeAreaView from 'react-native-safe-area-view';
 import Box from '../components/Box';
 import Text from '../components/Text';
+import Button from '../components/Button';
 import { CardOgren, CardCenterOgren } from '../components/CardOgren';
 import SvgRefresh from '../components/icons/Refresh';
 import SvgTwoWay from '../components/icons/TwoWay';
@@ -60,7 +61,9 @@ function Ogren() {
               <Text fontWeight='bold' fontSize={18}>
                 Bir Kelime
               </Text>
-              <SvgRefresh color='#E0E0E0' marginLeft={13} />
+              <Button>
+                <SvgRefresh color='#E0E0E0' marginLeft={13} />
+              </Button>
             </Box>
             <CardOgren
               subtitle='cinsilatif isim.'
@@ -72,14 +75,18 @@ function Ogren() {
               <Text fontWeight='bold' fontSize={18}>
                 Sıkça karıştırılanlar
               </Text>
-              <SvgRefresh color='#E0E0E0' marginLeft={13} />
+              <Button>
+                <SvgRefresh color='#E0E0E0' marginLeft={13} />
+              </Button>
             </Box>
             <Box flexDirection='row' justifyContent='space-between'>
               <CardCenterOgren
                 title='Sıkça karıştırılanlar'
                 text='tefriş etmek  fiil.'
               />
+
               <SvgTwoWay color='black' alignSelf='center' />
+
               <Box>
                 <CardCenterOgren text='tefriş etmek  fiil.' />
               </Box>
@@ -90,7 +97,9 @@ function Ogren() {
               <Text fontWeight='bold' fontSize={18}>
                 Bir Deyim Atasözü
               </Text>
-              <SvgRefresh color='#E0E0E0' marginLeft={13} />
+              <Button>
+                <SvgRefresh color='#E0E0E0' marginLeft={13} />
+              </Button>
             </Box>
             <CardOgren
               subtitle='“gülü tarife ne hacet, ne çiçektir biliriz.”'

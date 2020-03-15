@@ -1,6 +1,6 @@
 import Box from './Box';
 import Text from './Text';
-import SvgRefresh from './icons/Refresh';
+import Button from './Button';
 import SvgStar from './icons/Star';
 import * as React from 'react';
 
@@ -22,10 +22,14 @@ export function CardOgren({ subtitle, summary, width }) {
             {subtitle}
           </Text>
           <Box position='absolute' right={0}>
-            <SvgStar />
+            <Button>
+              <SvgStar />
+            </Button>
           </Box>
         </Box>
-        <Text mt={4} fontWeight='300'>{summary}</Text>
+        <Text mt={4} fontWeight='300'>
+          {summary}
+        </Text>
       </Box>
     </Box>
   );

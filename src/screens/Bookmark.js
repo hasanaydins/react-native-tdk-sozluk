@@ -4,6 +4,7 @@ import DetailBookmark from './DetailBookmark';
 import theme from '../utils/theme';
 import Box from '../components/Box';
 import Text from '../components/Text';
+import Button from '../components/Button';
 import SafeAreaView from 'react-native-safe-area-view';
 import SvgSort from '../components/icons/Sort';
 import SvgDots from '../components/icons/Dots';
@@ -26,7 +27,7 @@ function BookmarkStackScreen() {
         },
       }}
     >
-      <BookmarkStack.Screen name='Bookmark' component={Bookmark} />
+      <BookmarkStack.Screen name='sözlük' component={Bookmark} />
       <BookmarkStack.Screen name='Details' component={DetailBookmark} />
     </BookmarkStack.Navigator>
   );
@@ -88,8 +89,12 @@ function Bookmark({ navigation }) {
               Favoriler
             </Text>
             <Box flexDirection='row' alignItems='center'>
-              <SvgSort marginRight={28} color='black' width={22} />
-              <SvgDots color='black' height={22} />
+              <Button>
+                <SvgSort marginRight={28} color='black' width={22} />
+              </Button>
+              <Button>
+                <SvgDots color='black' height={22} />
+              </Button>
             </Box>
           </Box>
 
