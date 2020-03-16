@@ -85,7 +85,7 @@ function Ogren() {
                 text='tefriş etmek  fiil.'
               />
 
-              <SvgTwoWay color='black' alignSelf='center' />
+              <SvgTwoWay color='black' alignSelf='center' width={26} />
 
               <Box>
                 <CardCenterOgren text='tefriş etmek  fiil.' />

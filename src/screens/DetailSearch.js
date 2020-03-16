@@ -85,115 +85,116 @@ function DetailSearch({ route, navigation }) {
           <SvgStarBos color='white' width='30' height='30' />
         </Button>
       </Box>
-
-      {/* KELİME BAŞLIK */}
-      <Box
-        mt={30}
-        width={230}
-        height={77}
-
-        bg='#FFFFFF24'
-        flexDirection='row'
-        borderTopRightRadius={12}
-        borderBottomRightRadius={12}
-        justifyContent='center'
-        position='relative'
-        alignItems='center'
-      >
-        <Text
-          fontSize={24}
-          fontWeight='800'
-          color='white'
-          fontStyle='italic'
-          right={0}
-        >
-          {paramDesc}
-        </Text>
-
-        <Button
-          bg='white'
-          size={40}
-          borderRadius='full'
-          position='absolute'
-          right={-15}
+      <ScrollView >
+        {/* KELİME BAŞLIK */}
+        <Box
+          mt={30}
+          width={230}
+          height={77}
+          bg='#FFFFFF24'
+          flexDirection='row'
+          borderTopRightRadius={12}
+          borderBottomRightRadius={12}
           justifyContent='center'
+          position='relative'
           alignItems='center'
         >
-          <SvgSound width={20} />
-        </Button>
-      </Box>
-      <ScrollView style={{ marginTop: 50, paddingHorizontal: 30 }}>
-        <CardContainer>
-          <CardTitle>
-            1. fiil{' '}
-            <CardSubtitle>
-              konuşmak için toplantı başkanından izin almak, konuşmaya başlamak:
-            </CardSubtitle>
-          </CardTitle>
-          <CardTitle fontStyle='italic'>
-            Toplantıda ilk olarak başkan söz aldı.
-          </CardTitle>
-          <CardTitle>
-            2. fiil{' '}
-            <CardSubtitle>
-              birinin bir işi yapacağını kesin olarak bildirmesini sağlamak:
-            </CardSubtitle>
-          </CardTitle>
-          <CardTitle fontStyle='italic'>
-            İşimin yapılacağı konusunda bakandan söz aldım.
-          </CardTitle>
-          <CardTitle>
-            3. fiil{' '}
-            <CardSubtitle>
-              erkek tarafı oğullarıyla evlendirmek üzere kızın ailesinden olumlu
-              cevap almak.
-            </CardSubtitle>
-          </CardTitle>
-        </CardContainer>
+          <Text
+            fontSize={24}
+            fontWeight='800'
+            color='white'
+            fontStyle='italic'
+            right={0}
+          >
+            {paramDesc}
+          </Text>
 
-        <CardContainer>
-          <CardTitle>Parmak Alfabesiyle Gösterilişi</CardTitle>
+          <Button
+            bg='white'
+            size={40}
+            borderRadius='full'
+            position='absolute'
+            right={-15}
+            justifyContent='center'
+            alignItems='center'
+          >
+            <SvgSound width={20} />
+          </Button>
+        </Box>
+
+        <Box px={20} pt={20}>
+          <CardContainer>
+            <CardTitle>
+              1. fiil{' '}
+              <CardSubtitle>
+                konuşmak için toplantı başkanından izin almak, konuşmaya başlamak:
+              </CardSubtitle>
+            </CardTitle>
+            <CardTitle fontStyle='italic'>
+              Toplantıda ilk olarak başkan söz aldı.
+            </CardTitle>
+            <CardTitle>
+              2. fiil{' '}
+              <CardSubtitle>
+                birinin bir işi yapacağını kesin olarak bildirmesini sağlamak:
+              </CardSubtitle>
+            </CardTitle>
+            <CardTitle fontStyle='italic'>
+              İşimin yapılacağı konusunda bakandan söz aldım.
+            </CardTitle>
+            <CardTitle>
+              3. fiil{' '}
+              <CardSubtitle>
+                erkek tarafı oğullarıyla evlendirmek üzere kızın ailesinden olumlu
+                cevap almak.
+              </CardSubtitle>
+            </CardTitle>
+          </CardContainer>
+
+          <CardContainer>
+            <CardTitle>Parmak Alfabesiyle Gösterilişi</CardTitle>
+            <FlatList
+              horizontal={true}
+              data={GIFS}
+              keyExtractor={item => item.id}
+              renderItem={({ item }) => (
+                <Box mr={10}>
+                  <Image
+                    source={{ uri: item.source }}
+                    style={{
+                      overflow: 'hidden',
+                      height: 60,
+                      width: 85,
+                      borderRadius: 15,
+                      borderColor: '#E0E0E0',
+                      borderWidth: 2,
+                      overlayColor: 'white',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                  />
+                  <Text alignSelf='center' mt={4}>
+                    {item.harf}
+                  </Text>
+                </Box>
+              )}
+            />
+          </CardContainer>
+          <Text ml={10} mb={10} fontSize={16} fontStyle='italic' fontWeight='600'>
+            İçeren Yerler
+          </Text>
           <FlatList
+            height={70}
             horizontal={true}
-            data={GIFS}
+            data={DATA}
             keyExtractor={item => item.id}
             renderItem={({ item }) => (
-              <Box mr={10}>
-                <Image
-                  source={{ uri: item.source }}
-                  style={{
-                    overflow: 'hidden',
-                    height: 60,
-                    width: 85,
-                    borderRadius: 15,
-                    borderColor: '#E0E0E0',
-                    borderWidth: 2,
-                    overlayColor: 'white',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                />
-                <Text alignSelf='center' mt={4}>
-                  {item.harf}
-                </Text>
-              </Box>
+              <SimpleCardContainer>
+                <SimpleCardText>{item.title}</SimpleCardText>
+              </SimpleCardContainer>
             )}
           />
-        </CardContainer>
-        <Text ml={10} mb={10} fontSize={16} fontStyle='italic' fontWeight='600'>
-          İçeren Yerler
-        </Text>
-        <FlatList
-          height={70}
-          horizontal={true}
-          data={DATA}
-          keyExtractor={item => item.id}
-          renderItem={({ item }) => (
-            <SimpleCardContainer>
-              <SimpleCardText>{item.title}</SimpleCardText>
-            </SimpleCardContainer>
-          )}
-        />
+        </Box>
 
         {/*        <Text>Details Screen</Text>
         <Text>paramID: {paramID}</Text>

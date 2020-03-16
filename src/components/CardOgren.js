@@ -13,7 +13,7 @@ export function CardOgren({ subtitle, summary, width }) {
         borderWidth={1}
         bg='white'
         width={width}
-        paddingHorizontal={28}
+        paddingHorizontal={20}
         paddingVertical={18}
         mt={8}
       >
@@ -27,7 +27,7 @@ export function CardOgren({ subtitle, summary, width }) {
             </Button>
           </Box>
         </Box>
-        <Text mt={4} fontWeight='300'>
+        <Text mt={4} fontSize={15} fontWeight='300'>
           {summary}
         </Text>
       </Box>
@@ -45,7 +45,7 @@ export function CardCenterOgren({ text }) {
         alignItems='center'
         justifyContent='center'
         bg='white'
-        paddingHorizontal={22}
+        paddingHorizontal={15}
         paddingVertical={28}
         mt={8}
       >

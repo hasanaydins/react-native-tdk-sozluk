@@ -4,6 +4,7 @@ import Svg, { Path } from 'react-native-svg';
 function SvgSort(props) {
   return (
     <Svg
+      fill="currentColor"
       width='24'
       height='24'
       viewBox='0 0 22.432 19.628'
