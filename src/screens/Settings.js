@@ -13,6 +13,7 @@ import SvgMapPin from '../components/icons/MapPin';
 import SvgInfo from '../components/icons/Info';
 import SvgSun from '../components/icons/Sun';
 import SvgBack from '../components/icons/Back';
+import SafeAreaView from 'react-native-safe-area-view';
 export default function Settings({ navigation }) {
   const [isToggle, setToggle] = useState(false);
   const [modalHakkinda, setModalHakkinda] = useState(false);
@@ -25,8 +26,8 @@ export default function Settings({ navigation }) {
   );
 
   return (
-    <Box bg='bglight' flex={1}>
-      <Box height={100} mt={40}>
+    <Box as={SafeAreaView} bg='bglight' flex={1}>
+      <Box height={100}>
         <Box
           flexDirection='row'
           justifyContent='center'
@@ -95,7 +96,7 @@ export default function Settings({ navigation }) {
                   px={38}
                   py={14}
                   borderRadius={15}
-                  onPress={() => setModalHakkinda(false)}
+                  onPress={() => setModalYardim(false)}
                 >
                   <Text
                     ml={40}
@@ -123,7 +124,13 @@ export default function Settings({ navigation }) {
           </Modal>
         </Box>
 
-        <Button my={2} width='100%' p={20} borderColor='#f0f0f0'>
+        <Button
+          my={2}
+          width='100%'
+          p={20}
+          borderColor='#f0f0f0'
+          onPress={() => navigation.navigate('Iletisim')}
+        >
           <SvgMapPin color={theme.colors.red} />
           <Text fontSize={18} ml={10}>
             İletişim

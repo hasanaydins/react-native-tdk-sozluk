@@ -19,6 +19,7 @@ import DetailSearch from './DetailSearch';
 import Harfler from '../components/Harfler';
 import KelimeAra from '../components/KelimeAra';
 import Settings from './Settings';
+import Iletisim from './Iletisim';
 
 const SearchStack = createStackNavigator();
 
@@ -56,6 +57,10 @@ function SearchStackScreen({ route, navigation }) {
       <SearchStack.Screen
         name='Settings'
         component={Settings}
+      />
+      <SearchStack.Screen
+        name='Iletisim'
+        component={Iletisim}
       />
     </SearchStack.Navigator>
   );
