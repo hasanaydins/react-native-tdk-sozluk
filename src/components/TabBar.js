@@ -64,6 +64,7 @@ function TabBar({ state, descriptors, navigation }) {
               bg={isFocused ? '#E4171E18' : 'transparent'}
               borderRadius={14}
               onPress={onPress}
+              onLongPress={() => this.inputText.focus()}
             >
               {label === 'Search' && <SvgSearch color='#E41717' />}
               {label === 'Ogren' && <SvgOgren color='#E41717' />}

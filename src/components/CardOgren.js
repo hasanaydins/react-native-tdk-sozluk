@@ -3,6 +3,7 @@ import Text from './Text';
 import Button from './Button';
 import SvgStar from './icons/Star';
 import * as React from 'react';
+import SvgTwoWay from './icons/TwoWay';
 
 export function CardOgren({ subtitle, summary, width }) {
   return (
@@ -35,7 +36,43 @@ export function CardOgren({ subtitle, summary, width }) {
   );
 }
 
-export function CardCenterOgren({ text }) {
+export function CardCenterOgren({ ogrenData, dogru, yanlis }) {
+  return (
+    <Box>
+      <Box
+        borderRadius={15}
+        borderColor='#E0E0E0'
+        borderWidth={1}
+        alignItems='center'
+        justifyContent='space-around'
+        flexDirection='row'
+        bg='white'
+        paddingHorizontal={15}
+        paddingVertical={28}
+        mt={8}
+      >
+        <Box>
+          <Text fontSize={15} fontWeight='600'>
+            {dogru}
+          </Text>
+        </Box>
+        {ogrenData && (
+          <SvgTwoWay
+            color='black'
+            width={26}
+            style={{ marginHorizontal: 25 }}
+          />
+        )}
+        <Box>
+          <Text fontSize={15} fontWeight='600'>
+            {yanlis}
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+  );
+}
+export function CardCenterDogruYanlis({ text, dogruYanlis }) {
   return (
     <Box>
       <Box
@@ -44,14 +81,33 @@ export function CardCenterOgren({ text }) {
         borderWidth={1}
         alignItems='center'
         justifyContent='center'
+        flexDirection='row'
         bg='white'
+        height={130}
         paddingHorizontal={15}
         paddingVertical={28}
         mt={8}
       >
-        <Text fontSize={15} fontWeight='600'>
-          {text}
-        </Text>
+        <Box
+          p={1}
+          alignItems='center'
+          justifyContent='center'
+          textAlign='center'
+          flexDirection='column'
+        >
+          <Box>{dogruYanlis}</Box>
+
+          <Box mt={4}>
+            <Text
+              fontSize={15}
+              fontWeight='600'
+              textAlign='center'
+              style={{ lineHeight: 18 }}
+            >
+              {text.split(',')}
+            </Text>
+          </Box>
+        </Box>
       </Box>
     </Box>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { StatusBar, Animated, Keyboard, FlatList, View } from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import { useFocusEffect } from '@react-navigation/native';
@@ -31,7 +31,7 @@ function SearchStackScreen({ route, navigation }) {
         component={SearchScreen}
         options={() => {
           return {
-            header: () => {},
+            /*   headerShown: false,*/
             /* title: '',*/
             /*            headerStyle: {
               backgroundColor: theme.colors.red,
@@ -45,23 +45,9 @@ function SearchStackScreen({ route, navigation }) {
           };
         }}
       />
-      <SearchStack.Screen
-        name='Detail'
-        component={DetailSearch}
-        options={() => {
-          return {
-            header: () => {},
-          };
-        }}
-      />
-      <SearchStack.Screen
-        name='Settings'
-        component={Settings}
-      />
-      <SearchStack.Screen
-        name='Iletisim'
-        component={Iletisim}
-      />
+      <SearchStack.Screen name='Detail' component={DetailSearch} />
+      <SearchStack.Screen name='Settings' component={Settings} />
+      <SearchStack.Screen name='Iletisim' component={Iletisim} />
     </SearchStack.Navigator>
   );
 }
@@ -177,6 +163,7 @@ function SearchScreen({ navigation }) {
       StatusBar.setBarStyle(isFocused ? 'dark-content' : 'light-content');
     }, [isFocused]),
   );
+
   return (
     <Box
       flex={1}
@@ -227,6 +214,7 @@ function SearchScreen({ navigation }) {
           height={64}
           borderRadius='normal'
           paddingLeft={47}
+          ref={ref => (this.inputText = ref)}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
         />
@@ -241,7 +229,7 @@ function SearchScreen({ navigation }) {
               <SvgBack color={theme.colors.gray} />
             </Button>
           ) : (
-            <Button>
+            <Button onPress={() => this.inputText.focus()}>
               <SvgSearch color={theme.colors.gray} />
             </Button>
           )}
