@@ -6,7 +6,8 @@ https://photos.app.goo.gl/4zakET4e9humWSTY8
 
 # 👋🏽 Giriş
 
-TDK sözlük uygulamasının tasarım yarışmasında katıldığım ve 3. olduğum tasarımımı react native ile gerçeklemeye çalıştım.
+TDK sözlük uygulamasının remake tasarım yarışmasında katıldığım ve 3. olduğum tasarımımı react native ile gerçeklemeye çalıştım.
+Tasarım linki: https://dribbble.com/shots/10014823-Dictionary-App
 
 ## Kullanılan Kütüphaneler
 
